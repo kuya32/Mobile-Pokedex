@@ -46,6 +46,7 @@ class MainActivity : ComponentActivity() {
                         val pokemonName = remember {
                             it.arguments?.getString("pokemonName")
                         }
+
                     }
                 }
             }

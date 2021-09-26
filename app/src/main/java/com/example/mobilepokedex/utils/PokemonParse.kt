@@ -7,7 +7,7 @@ import com.example.mobilepokedex.ui.theme.*
 import java.util.*
 
 fun parseTypeToColor(type: Type): Color {
-    return when(type.type.name.toLowerCase(Locale.ROOT)) {
+    return when(type.type.name.lowercase(Locale.ROOT)) {
         "normal" -> TypeNormal
         "fire" -> TypeFire
         "water" -> TypeWater

@@ -3,6 +3,7 @@ package com.example.mobilepokedex.repository
 import com.example.mobilepokedex.data.remote.responses.Pokemon
 import com.example.mobilepokedex.data.remote.responses.PokemonList
 import com.example.mobilepokedex.utils.Resource
+import dagger.Provides
 
 interface PokemonRepository {
 

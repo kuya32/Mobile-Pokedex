@@ -1,9 +1,9 @@
 package com.example.mobilepokedex.pokemonDetail
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -14,9 +14,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.produceState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.capitalize
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -25,7 +30,9 @@ import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import coil.request.ImageRequest
 import com.example.mobilepokedex.data.remote.responses.Pokemon
+import com.example.mobilepokedex.data.remote.responses.Type
 import com.example.mobilepokedex.utils.Resource
+import java.util.*
 
 
 @ExperimentalCoilApi
@@ -34,12 +41,12 @@ fun PokemonDetailScreen(
     dominantColor: Color,
     pokemonName: String,
     navController: NavController,
-    topPadding: Dp = 20.dp,
+    topPadding: Dp = 50.dp,
     pokemonImageSize: Dp = 200.dp,
     viewModel: PokemonDetailViewModel = hiltViewModel()
 ) {
-    val pokemonInfo = produceState(initialValue = Resource.Loading<Pokemon>()) {
-        value = viewModel.getPokemonInfo(pokemonName)
+    val pokemonInfo = produceState<Resource<Pokemon>>(initialValue = Resource.Loading()) {
+        value = viewModel.getPokemonInfo(pokemonName)!!
     }.value
     Box(
         modifier = Modifier
@@ -58,7 +65,26 @@ fun PokemonDetailScreen(
             pokemonInfo = pokemonInfo,
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = topPadding + pokemonImageSize / 2f, start = 16.dp)
+                .padding(
+                    top = topPadding + pokemonImageSize / 2f,
+                    start = 16.dp,
+                    end = 16.dp,
+                    bottom = 16.dp
+                )
+                .shadow(10.dp, RoundedCornerShape(10.dp))
+                .clip(RoundedCornerShape(10.dp))
+                .background(MaterialTheme.colors.surface)
+                .padding(16.dp)
+                .align(Alignment.BottomCenter),
+            loadingModifier = Modifier
+                .size(100.dp)
+                .align(Alignment.Center)
+                .padding(
+                    top = topPadding + pokemonImageSize / 2f,
+                    start = 16.dp,
+                    end = 16.dp,
+                    bottom = 16.dp
+                )
         )
         Box(
             contentAlignment = Alignment.TopCenter,
@@ -92,7 +118,7 @@ fun PokemonDetailTopSection(
     modifier: Modifier = Modifier
 ) {
     Box(
-        contentAlignment = Alignment.TopCenter,
+        contentAlignment = Alignment.TopStart,
         modifier = modifier
             .background(
                 Brush.verticalGradient(
@@ -142,3 +168,49 @@ fun PokemonDetailStateWrapper(
         }
     }
 }
+
+@Composable
+fun PokemonDetailSection(
+    pokemonInfo: Pokemon,
+    modifier: Modifier = Modifier
+) {
+    val scrollState = rememberScrollState()
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = modifier
+            .fillMaxSize()
+            .offset(y = 100.dp)
+            .verticalScroll(scrollState)
+    ) {
+        Text(
+            text = "#${pokemonInfo.id} ${pokemonInfo.name.replaceFirstChar {
+                if (it.isLowerCase()) it.titlecase(
+                    Locale.getDefault()
+                ) else it.toString()
+            }}",
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center,
+            color = MaterialTheme.colors.onSurface
+        )
+    }
+}
+
+//@Composable
+//fun PokemonTypeSection(types: List<Type>) {
+//    Row(
+//        veritcalAlignment = Alignment.CenterVertically,
+//        modifier = Modifier
+//            .padding(16.dp)
+//    ) {
+//        for (type in types) {
+//            Box(
+//                contentAlignment = Alignment.Center,
+//                modifier = Modifier
+//                    .weight(1f)
+//                    .padding(horizontal = 8.dp)
+//                    .clip(CircleShape)
+//                    .background()
+//            )
+//        }
+//    }
+//}

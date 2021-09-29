@@ -63,7 +63,7 @@ fun PokemonDetailScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colors.surface)
+            .background(dominantColor)
             .padding(bottom = 16.dp)
     ) {
         PokemonDetailTopSection(

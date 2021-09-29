@@ -42,6 +42,7 @@ import coil.compose.rememberImagePainter
 import coil.request.ImageRequest
 import com.example.mobilepokedex.R
 import com.example.mobilepokedex.data.models.PokedexListEntry
+import kotlinx.coroutines.launch
 
 @ExperimentalCoilApi
 @Composable
@@ -141,7 +142,9 @@ fun PokemonList(
         }
         items(itemCount) {
             if (it >= itemCount - 1 && !endReached && !isLoading && !isSearching) {
-                viewModel.loadPokemonPaginated()
+                LaunchedEffect(key1 = true) {
+                    viewModel.loadPokemonPaginated()
+                }
             }
             PokedexRow(rowIndex = it, entries = pokemonList, navController = navController)
         }
@@ -175,6 +178,19 @@ fun PokedexEntry(
         mutableStateOf(defaultDominantColor)
     }
 
+    val scope = rememberCoroutineScope()
+
+    val context = LocalContext.current
+
+    LaunchedEffect(key1 = true) {
+        scope.launch {
+            val entryDrawable = viewModel.getDrawable(entry.imageUrl, context)
+            viewModel.calcDominantColor(entryDrawable) { color ->
+                dominantColor.value = color
+            }
+        }
+    }
+
     Box(
         contentAlignment = Center,
         modifier = modifier
@@ -198,9 +214,11 @@ fun PokedexEntry(
         Column() {
             Image(
                 painter = rememberImagePainter(
+                    imageLoader = ImageLoader(LocalContext.current),
                     request = ImageRequest.Builder(LocalContext.current)
                         .data(entry.imageUrl)
                         .crossfade(true)
+
                         .build(),
                 ),
                 contentDescription = entry.pokemonName,

@@ -1,19 +1,17 @@
 package com.example.mobilepokedex.pokemonList
 
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.capitalize
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.palette.graphics.Palette
 import coil.ImageLoader
-import coil.compose.rememberImagePainter
 import coil.request.ImageRequest
+import coil.request.SuccessResult
 import com.example.mobilepokedex.data.models.PokedexListEntry
 import com.example.mobilepokedex.data.respository.PokemonRepositoryImpl
 import com.example.mobilepokedex.utils.Constants.PAGE_SIZE
@@ -70,8 +68,8 @@ class PokemonListViewModel @Inject constructor(
     }
 
     fun loadPokemonPaginated() {
-        isLoading.value = true
         viewModelScope.launch {
+            isLoading.value = true
             val result = repositoryImpl.getPokemonList(PAGE_SIZE, currentPage * PAGE_SIZE)
             when (result) {
                 is Resource.Success -> {
@@ -100,11 +98,21 @@ class PokemonListViewModel @Inject constructor(
                     pokemonList.value += pokedexEntries
                 }
                 is Resource.Error -> {
-                    loadError.value = result.message!!
+                    loadError.value = "Something happened while loading list of Pokemon!"
                     isLoading.value = false
                 }
             }
         }
+    }
+
+    suspend fun getDrawable(url: String, context: Context): Drawable {
+        val loader = ImageLoader(context = context)
+        val request = ImageRequest.Builder(context = context)
+            .data(url)
+            .crossfade(true)
+            .build()
+
+        return (loader.execute(request) as SuccessResult).drawable
     }
 
     fun calcDominantColor(drawable: Drawable, onFinish: (Color) -> Unit) {

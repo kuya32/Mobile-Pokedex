@@ -23,7 +23,7 @@ class PokemonRepositoryImpl @Inject constructor(
         return Resource.Success(response)
     }
 
-    override suspend fun getPokemonInfo(pokemonName: String): Resource<Pokemon>? {
+    override suspend fun getPokemonInfo(pokemonName: String): Resource<Pokemon> {
         val response = try {
             api.getPokemonInfo(pokemonName)
         } catch (e: Exception) {

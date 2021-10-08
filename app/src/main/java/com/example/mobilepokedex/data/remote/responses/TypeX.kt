@@ -1,6 +1,11 @@
 package com.example.mobilepokedex.data.remote.responses
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.Ignore
+
+@Entity
 data class TypeX(
-    val name: String,
-    val url: String
+    @ColumnInfo val name: String,
+    @Ignore val url: String
 )

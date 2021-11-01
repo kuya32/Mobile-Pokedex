@@ -28,6 +28,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -53,12 +54,12 @@ fun PokemonDetailScreen(
     dominantColor: Color,
     pokemonName: String,
     navController: NavController,
-    topPadding: Dp = 50.dp,
+    topPadding: Dp = 24.dp,
     pokemonImageSize: Dp = 200.dp,
     viewModel: PokemonDetailViewModel = hiltViewModel()
 ) {
     val pokemonInfo = produceState<Resource<Pokemon>>(initialValue = Resource.Loading()) {
-        value = viewModel.getPokemonInfo(pokemonName)!!
+        value = viewModel.getPokemonInfo(pokemonName)
     }.value
     Box(
         modifier = Modifier
@@ -380,7 +381,8 @@ fun PokemonBaseStats(
         pokemonInfo.stats.maxOf { it.base_stat }
     }
     Column(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
     ) {
         Text(
             text = "Base stats:",

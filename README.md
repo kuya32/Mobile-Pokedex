@@ -6,7 +6,7 @@
 
 ## Overview
 
-- Android application that displays a list of pokemon throughout multiple generations and gives a basic details of each pokemon.
+- Android application that displays a list of pokemon throughout multiple generations and gives a basic detailed information of each pokemon.
 
 ## ScreenShots
 

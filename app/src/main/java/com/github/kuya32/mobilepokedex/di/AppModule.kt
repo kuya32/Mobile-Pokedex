@@ -1,8 +1,8 @@
 package com.github.kuya32.mobilepokedex.di
 
-import com.github.mobilepokedex.data.remote.PokeApi
-import com.github.mobilepokedex.data.respository.PokemonRepositoryImpl
-import com.github.mobilepokedex.utils.Constants.BASE_URL
+import com.github.kuya32.mobilepokedex.data.remote.PokeApi
+import com.github.kuya32.mobilepokedex.data.respository.PokemonRepositoryImpl
+import com.github.kuya32.mobilepokedex.utils.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

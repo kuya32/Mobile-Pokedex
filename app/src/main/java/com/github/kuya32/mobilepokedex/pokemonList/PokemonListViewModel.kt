@@ -12,10 +12,10 @@ import androidx.palette.graphics.Palette
 import coil.ImageLoader
 import coil.request.ImageRequest
 import coil.request.SuccessResult
-import com.github.mobilepokedex.data.models.PokedexListEntry
-import com.github.mobilepokedex.data.respository.PokemonRepositoryImpl
-import com.github.mobilepokedex.utils.Constants.PAGE_SIZE
-import com.github.mobilepokedex.utils.Resource
+import com.github.kuya32.mobilepokedex.data.models.PokedexListEntry
+import com.github.kuya32.mobilepokedex.data.respository.PokemonRepositoryImpl
+import com.github.kuya32.mobilepokedex.utils.Constants.PAGE_SIZE
+import com.github.kuya32.mobilepokedex.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -74,7 +74,7 @@ class PokemonListViewModel @Inject constructor(
             when (result) {
                 is Resource.Success -> {
                     endReached.value = currentPage * PAGE_SIZE >= result.data!!.count
-                    val pokedexEntries = result.data.results.mapIndexed { index, entry ->
+                    val pokedexEntries = result.data.results.mapIndexed { _, entry ->
                         val number = if (entry.url.endsWith("/")) {
                             entry.url.dropLast(1).takeLastWhile { it.isDigit() }
                         } else {

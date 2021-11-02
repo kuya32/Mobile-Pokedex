@@ -1,10 +1,10 @@
 package com.github.kuya32.mobilepokedex.data.respository
 
-import com.github.mobilepokedex.data.remote.PokeApi
-import com.github.mobilepokedex.data.remote.responses.Pokemon
-import com.github.mobilepokedex.data.remote.responses.PokemonList
-import com.github.mobilepokedex.repository.PokemonRepository
-import com.github.mobilepokedex.utils.Resource
+import com.github.kuya32.mobilepokedex.data.remote.PokeApi
+import com.github.kuya32.mobilepokedex.data.remote.responses.Pokemon
+import com.github.kuya32.mobilepokedex.data.remote.responses.PokemonList
+import com.github.kuya32.mobilepokedex.repository.PokemonRepository
+import com.github.kuya32.mobilepokedex.utils.Resource
 import dagger.hilt.android.scopes.ActivityScoped
 import java.lang.Exception
 import javax.inject.Inject

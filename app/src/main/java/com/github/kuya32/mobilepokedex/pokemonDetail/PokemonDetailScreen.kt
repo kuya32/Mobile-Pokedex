@@ -35,13 +35,13 @@ import androidx.navigation.NavController
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import coil.request.ImageRequest
-import com.github.mobilepokedex.R
-import com.github.mobilepokedex.data.remote.responses.Pokemon
-import com.github.mobilepokedex.data.remote.responses.Type
-import com.github.mobilepokedex.utils.Resource
-import com.github.mobilepokedex.utils.parseStatToAbbr
-import com.github.mobilepokedex.utils.parseStatToColor
-import com.github.mobilepokedex.utils.parseTypeToColor
+import com.github.kuya32.mobilepokedex.R
+import com.github.kuya32.mobilepokedex.data.remote.responses.Pokemon
+import com.github.kuya32.mobilepokedex.data.remote.responses.Type
+import com.github.kuya32.mobilepokedex.utils.Resource
+import com.github.kuya32.mobilepokedex.utils.parseStatToAbbr
+import com.github.kuya32.mobilepokedex.utils.parseStatToColor
+import com.github.kuya32.mobilepokedex.utils.parseTypeToColor
 import java.lang.Math.round
 import java.util.*
 

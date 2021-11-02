@@ -11,9 +11,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
 import androidx.navigation.compose.rememberNavController
 import coil.annotation.ExperimentalCoilApi
-import com.github.mobilepokedex.pokemonDetail.PokemonDetailScreen
-import com.github.mobilepokedex.pokemonList.PokemonListScreen
-import com.github.mobilepokedex.ui.theme.MobilePokedexTheme
+import com.github.kuya32.mobilepokedex.pokemonDetail.PokemonDetailScreen
+import com.github.kuya32.mobilepokedex.pokemonList.PokemonListScreen
+import com.github.kuya32.mobilepokedex.ui.theme.MobilePokedexTheme
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 

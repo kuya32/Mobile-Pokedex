@@ -1,7 +1,7 @@
 package com.github.kuya32.mobilepokedex.data.remote
 
-import com.github.mobilepokedex.data.remote.responses.Pokemon
-import com.github.mobilepokedex.data.remote.responses.PokemonList
+import com.github.kuya32.mobilepokedex.data.remote.responses.Pokemon
+import com.github.kuya32.mobilepokedex.data.remote.responses.PokemonList
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

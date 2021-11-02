@@ -1,9 +1,9 @@
 package com.github.kuya32.mobilepokedex.utils
 
 import androidx.compose.ui.graphics.Color
-import com.github.mobilepokedex.data.remote.responses.Type
-import com.github.mobilepokedex.data.remote.responses.Stat
-import com.github.mobilepokedex.ui.theme.*
+import com.github.kuya32.mobilepokedex.data.remote.responses.Type
+import com.github.kuya32.mobilepokedex.data.remote.responses.Stat
+import com.github.kuya32.mobilepokedex.ui.theme.*
 import java.util.*
 
 fun parseTypeToColor(type: Type): Color {

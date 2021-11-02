@@ -1,8 +1,8 @@
 package com.github.kuya32.mobilepokedex.repository
 
-import com.github.mobilepokedex.data.remote.responses.Pokemon
-import com.github.mobilepokedex.data.remote.responses.PokemonList
-import com.github.mobilepokedex.utils.Resource
+import com.github.kuya32.mobilepokedex.data.remote.responses.Pokemon
+import com.github.kuya32.mobilepokedex.data.remote.responses.PokemonList
+import com.github.kuya32.mobilepokedex.utils.Resource
 
 interface PokemonRepository {
 

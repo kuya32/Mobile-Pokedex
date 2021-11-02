@@ -33,8 +33,8 @@ import coil.ImageLoader
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import coil.request.ImageRequest
-import com.github.mobilepokedex.R
-import com.github.mobilepokedex.data.models.PokedexListEntry
+import com.github.kuya32.mobilepokedex.R
+import com.github.kuya32.mobilepokedex.data.models.PokedexListEntry
 import kotlinx.coroutines.launch
 
 @ExperimentalCoilApi
